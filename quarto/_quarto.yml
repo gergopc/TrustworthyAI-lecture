@@ -1,0 +1,16 @@
+project:
+  type: default
+
+format:
+  revealjs:
+    theme: [default, ftsrg.scss]
+    width: 1600
+    height: 900
+    margin: 0           # footer flush with the bottom edge, as in the PPTX
+    slide-number: c     # plain number, centred in the footer by ftsrg.scss
+    progress: false     # the footer is the only bottom decoration
+    highlight-style: github
+    html-math-method: mathml   # formulas rendered at build time: no MathJax CDN needed
+    filters:
+      - ftsrg.lua
+      - live-cells.lua

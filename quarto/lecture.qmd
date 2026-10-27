@@ -1,0 +1,44 @@
+---
+pagetitle: "Big Data visualization"
+---
+
+## Big Data visualization {.ftsrg-title data-state="ftsrg-title" background-image="assets/brand/title-bg.png" background-size="contain"}
+
+::: course
+Empirical Systems Engineering\
+2026\. Fall
+
+Dr. Imre Kocsis, [kocsis.imre@vik.bme.hu](mailto:kocsis.imre@vik.bme.hu)
+:::
+
+[![](assets/brand/bme-logo.jpg){fig-alt="BME"}]{.logo-bme}
+
+::: institution
+Budapest University of Technology and Economics\
+Department of Artificial Intelligence and Systems Engineering\
+ftsrg Research Group
+:::
+
+[![](assets/brand/ftsrg-logo-color.png){fig-alt="ftsrg"}]{.logo-ftsrg}
+
+::: notes
+- Today: what to do when a data set has far more rows than the screen has pixels.
+- The road: the problem → a framework (bin, summarize, smooth, plot) → datashader, the
+  framework at pixel resolution → live on 300 million people → where aggregation runs
+  for interactivity → tools → pitfalls.
+- Most of the census part runs live: questions and "what if we change this?" welcome.
+:::
+
+{{< include _problem.qmd >}}
+
+{{< include _framework.qmd >}}
+
+{{< include _bridge.qmd >}}
+
+{{< include _census-live.qmd >}}
+
+{{< include _interactivity.qmd >}}
+
+{{< include _landscape.qmd >}}
+
+{{< include _close.qmd >}}

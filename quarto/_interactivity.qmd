@@ -1,0 +1,108 @@
+# Interactivity at scale: where does aggregation run?
+
+::: notes
+Every zoom or pan needs a new aggregate. Three ways to afford that: redo it on demand,
+precompute it, or hand it to a query engine. Same Big Data | Small Data split as on
+the architecture slide; what changes is where and when the left side runs.
+:::
+
+## Re-aggregate on demand, on the server
+
+::: {style="--diagram-h: 330px"}
+```{=html}
+{{< include assets/diagrams/arch-on-demand.svg >}}
+```
+:::
+
+- What the census demo does: every zoom or pan re-runs datashader in Python
+- One full pass over the data per interaction; only the image travels
+- Any question you can code, always on current data
+
+::: notes
+- The live demo: Bokeh in the browser sends the new ranges; the Panel / HoloViews
+  server re-aggregates all rows in the visible range at screen resolution; back comes an
+  RGB image (datashade) or the aggregate itself, one value per pixel (rasterize).
+- The data stays on the server, in memory after persist() or out of core with Dask.
+- Latency = one aggregation pass: the wall-time readout on the live slides shows it
+  (well under a second for 300 M rows on this laptop).
+- Flexible and always current, but every user interaction costs a full pass: fine for
+  one analyst, expensive for thousands of users.
+:::
+
+## Precompute: tiles and data cubes
+
+::: {style="--diagram-h: 380px"}
+```{=html}
+{{< include assets/diagrams/arch-precompute.svg >}}
+```
+:::
+
+- Compute once, serve many: each interaction is a lookup
+- Fast, but limited to the choices made in advance
+
+::: small
+**Racial Dot Map** (Cooper Center, UVA, 2013; now offline): prerendered tiles, one dot per person · **Nanocubes** (Lins, Klosowski, Scheidegger 2013): in-memory spatiotemporal data cube · **imMens** (Liu, Jiang, Heer 2013): binned "data tiles", brushed on the GPU
+:::
+
+::: notes
+- Ahead of time, a batch job aggregates everything at every zoom level: a tile pyramid
+  (zoom level z has 2^z × 2^z tiles; the tile keys are the Z-order quadkeys from the
+  framework section) or a data cube (aggregates for combinations of dimensions).
+- At view time the browser only fetches what its viewport needs: a lookup, no pass over
+  the rows, cheap to serve to many users (static files, a CDN).
+- The price: only the precomputed choices. The HoloViz census notebook contrasts the
+  Racial Dot Map with datashader: pre-rendered tiles "are fast to view but limited to
+  the specific plotting choices they made". New data means a rebuild.
+- Racial Dot Map: Dustin Cable, Weldon Cooper Center, University of Virginia, 2013;
+  308,745,538 dots from the 2010 census; taken offline by the Center (statement
+  archived Dec 2022).
+- Nanocubes: IEEE TVCG 19(12), 2013: aggregation queries over billions of records at
+  interactive rates, in memory. imMens: Computer Graphics Forum 32(3), 2013:
+  multivariate binned data tiles, queried and rendered in parallel with WebGL at ~50
+  fps. Both are research prototypes, no longer maintained.
+:::
+
+## Push aggregation into a query engine
+
+::: {style="--diagram-h: 330px"}
+```{=html}
+{{< include assets/diagrams/arch-query-engine.svg >}}
+```
+:::
+
+- Each view sends SQL; the engine aggregates; the browser gets a small result
+- **Mosaic** (Heer & Moritz, 2023): views query DuckDB; linked views get pre-aggregated tables at pixel resolution
+- **VegaFusion** (Kruchten, Mease, Moritz, 2022): Vega and Altair transforms run in a Rust query engine
+
+::: notes
+- The aggregation is expressed as a query: bin x and y, GROUP BY the bins, count or
+  average. A modern columnar engine scans only the columns it needs, vectorised and in
+  parallel.
+- Mosaic: J. Heer, D. Moritz, IEEE TVCG 30(1), 2024 (VIS 2023); idl.uw.edu/mosaic. A
+  coordinator collects the views' queries, runs them in DuckDB, and builds
+  "materialized views" of data pre-aggregated at the level of input pixels, so linked
+  selections stay fast: a small data cube built on demand. DuckDB runs on a server, in
+  the browser (DuckDB-WASM) or in the Jupyter kernel (mosaic-widget).
+- VegaFusion: N. Kruchten, J. Mease, D. Moritz, IEEE VIS 2022; vegafusion.io. Splits a
+  Vega spec into a browser part and a server part; the server part runs on Apache
+  DataFusion. In Altair: alt.data_transformers.enable("vegafusion"). Part of the Vega
+  organisation since 2024; maintained, releases infrequent.
+- "Query engine" rather than "database": DataFusion is an engine without a database.
+:::
+
+## Three architectures compared
+
+|                    | Latency per interaction | Data freshness | Query flexibility | Cost / infrastructure |
+|--------------|--------------|--------------|--------------|----------------|
+| **Re-aggregate on demand** | one pass over the data | always current | anything you can code | a live server holding the data |
+| **Precomputed tiles / cubes** | a lookup | stale until rebuilt | only what was precomputed | heavy preprocessing and storage, cheap serving |
+| **Query engine** | one query; engine optimisations help | as current as the database | what SQL can express | an engine: server, kernel or browser |
+
+::: notes
+- Qualitative, not benchmarks.
+- Real systems mix them: datashader over precomputed aggregates; Mosaic's
+  pre-aggregated tables are a small data cube built on demand; map tiles are cached
+  renders of on-demand queries.
+- Rule of thumb: one analyst exploring freely → on demand; many users, fixed views →
+  precompute; data already in a warehouse or lake → push the query down.
+:::

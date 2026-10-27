@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 640" id="census-lineage" class="diagram" role="img"
+ aria-label="Lineage of the data: the 2010 census questionnaire, answered by every resident; the Census Bureau publishes counts per census block, with some households swapped for privacy; the Cooper Center's Racial Dot Map places one dot per person at a random spot inside its block; the HoloViz example keeps the contiguous US as a Parquet file of 306,675,004 rows">
+<defs><marker id="cl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2F2D2E"/></marker></defs>
+<style>
+#census-lineage .n{font-size:23px;font-weight:700;fill:#2F2D2E;text-anchor:middle}
+#census-lineage .d{font-size:19px;fill:#2F2D2E;text-anchor:middle}
+#census-lineage .a{font-size:18px;font-style:italic;fill:#522B47}
+</style>
+<rect x="40" y="6" width="520" height="92" rx="10" fill="#522B47" fill-opacity="0.08" stroke="#522B47" stroke-width="1.5"/>
+<text x="300" y="40" class="n">2010 US census, 1 April 2010</text>
+<text x="300" y="68" class="d">every resident, 10 questions,</text>
+<text x="300" y="90" class="d">race and Hispanic origin self-reported</text>
+<line x1="300" y1="98" x2="300" y2="162" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#cl-arrow)"/>
+<text x="316" y="124" class="a">counts per census block</text>
+<text x="316" y="148" class="a">(a few households swapped)</text>
+<rect x="40" y="166" width="520" height="92" rx="10" fill="#522B47" fill-opacity="0.08" stroke="#522B47" stroke-width="1.5"/>
+<text x="300" y="200" class="n">Census Bureau, Summary File 1</text>
+<text x="300" y="228" class="d">table P5: Hispanic origin by race,</text>
+<text x="300" y="250" class="d">for each of 11 million blocks</text>
+<line x1="300" y1="258" x2="300" y2="322" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#cl-arrow)"/>
+<text x="316" y="284" class="a">a dot per person, placed</text>
+<text x="316" y="308" class="a">at random in its block</text>
+<rect x="40" y="326" width="520" height="92" rx="10" fill="#960018" fill-opacity="0.07" stroke="#960018" stroke-width="1.5"/>
+<text x="300" y="360" class="n">Racial Dot Map, Cooper Center (UVA)</text>
+<text x="300" y="388" class="d">D. Cable, 2013: 308,745,538 dots,</text>
+<text x="300" y="410" class="d">5 categories</text>
+<line x1="300" y1="418" x2="300" y2="482" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#cl-arrow)"/>
+<text x="316" y="444" class="a">contiguous US only,</text>
+<text x="316" y="468" class="a">as Parquet</text>
+<rect x="40" y="486" width="520" height="110" rx="10" fill="#FB8B24" fill-opacity="0.22" stroke="#C45F00" stroke-width="2"/>
+<text x="300" y="522" class="n">HoloViz census example (today)</text>
+<text x="300" y="552" class="d">306,675,004 rows:</text>
+<text x="300" y="578" class="d">easting, northing, race</text>
+</svg>

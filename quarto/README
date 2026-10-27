@@ -1,0 +1,20 @@
+Conda should be installed and the base env activated
+Ensure that there's no "census" conda environment yet
+
+conda env create -f environment.yml
+conda activate census
+
+NOTE: To give it a different name, add -n, e.g. conda env create -f environment.yml -n bigdata-viz, and change the conda activate line in present.sh to match. To update it after editing the yml: conda env update -f environment.yml --prune
+
+The census data that we work with is from: https://s3.amazonaws.com/datashader-data/census2010.parq.zip
+It (the census2010.parq directory) should go under ./data/
+To preserve space, the data may not be there yet.
+
+The 3D slide plays NASA's CO2 video from ./assets/video/nasa-co2-following.mp4 (not in git, ~100 MB):
+curl -L -o assets/video/nasa-co2-following.mp4 https://svs.gsfc.nasa.gov/vis/a010000/a012400/a012445/LARGE_MP4-12445_VolumetricCO2_large.mp4
+Without it the slide shows a still image and links the video.
+
+./present.sh - witness the magic.
+
+Static PDF (lecture.pdf): with live.py running (e.g. ./present.sh), `python print_pdf.py`.
+It needs Playwright: pip install playwright && playwright install chromium

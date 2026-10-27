@@ -1,0 +1,64 @@
+# Pitfalls and take‑aways
+
+::: notes
+A checklist to take home: six ways a big-data plot lies, each one seen today.
+:::
+
+## Pitfalls, part 1: too many marks
+
+| Pitfall | What goes wrong | Where you saw it |
+|--------|------------------|------------------|
+| **Overplotting** | later marks hide earlier ones; draw order decides what you see | one-mark-per-row charts; datashader aggregates instead |
+| **Oversaturation** | with transparency, every dense area reaches full colour | avoided: the census maps colour counts, not blended marks |
+| **Undersampling** | a random subsample loses the shape of the distribution | the sampling slides; the census used all 300 M rows |
+
+::: source
+[datashader.org: Common plotting pitfalls that get worse with large data](https://datashader.org/user_guide/Plotting_Pitfalls.html)
+:::
+
+::: notes
+- Names and definitions follow datashader's Plotting Pitfalls page.
+- Overplotting: the drive fleet on the pixel-budget slide; draw order decided the story.
+- Oversaturation: with alpha = 0.1, ten overlapping points already saturate a pixel, so
+  every higher density looks the same, and the right alpha depends on the data.
+- Undersampling: the 0.1 % census sample lost the sparse West.
+- Aggregating first (count per pixel, then colour the counts) sidesteps all three.
+:::
+
+## Pitfalls, part 2: too few colours
+
+| Pitfall | What goes wrong | Where you saw it |
+|--------|------------------|------------------|
+| **Undersaturation** | sparse but non-empty bins look like the background | "lift the floor": `cm(Greys9, 0.25)` |
+| **Underutilized range** | nearly all pixels at the two ends of the colormap | "Linear colour scale: almost nothing"; fixed by log, `eq_hist` |
+| **Nonuniform colormapping** | stretches of equal-looking colours hide detail | colorcet's fire vs matplotlib's hot |
+
+**Always look at both the linear and the equalized view**
+
+::: source
+[datashader.org: Common plotting pitfalls that get worse with large data](https://datashader.org/user_guide/Plotting_Pitfalls.html)
+:::
+
+::: notes
+- Undersaturation: sparse but non-empty pixels look like the background; fixed by
+  lifting the colormap's floor. (The census notebook, and our live slide, call that fix
+  "preventing undersampling"; the pitfalls page's name for the problem is
+  undersaturation.)
+- Underutilized range: the linear map, where a few huge counts squeeze everything else
+  into the darkest colours. Fixed by log or, without guessing, eq_hist.
+- Nonuniform colormapping: matplotlib's hot vs colorcet's fire.
+- Why both views: equalization shows structure at every density but hides magnitudes;
+  linear shows magnitudes but hides structure. The top-1 % colormap combined them.
+:::
+
+## Take‑aways
+
+- Pixels are the bottleneck: aggregate, don't draw every row
+- Bin, summarize, smooth, plot: datashader does it with pixels as bins
+- Decide where aggregation runs: on demand, precomputed, or in a query engine
+- Check the pitfalls: look at both the linear and the equalized view
+
+::: notes
+- One line per stage of today: the problem; the framework and the bridge; the
+  architectures; the pitfalls.
+:::

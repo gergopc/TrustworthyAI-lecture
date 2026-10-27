@@ -1,0 +1,591 @@
+/*-- scss:defaults --*/
+
+// ftsrg lecture look (see STYLE.md), measured on the 2024 PPTX master.
+// All lengths are in slide coordinates: the deck is 1600×900, 1 inch = 120 px.
+
+$ftsrg-title-color: #2F2D2E;
+$ftsrg-grey:        #A7A8A7;
+$ftsrg-blue:        #1446A0;
+$ftsrg-crimson:     #960018;
+$ftsrg-plum:        #522B47;
+$ftsrg-orange:      #FB8B24;
+$ftsrg-tab-from:    #283C88;
+$ftsrg-tab-to:      #5F2C60;
+
+// Quarto copies url()s verbatim into lecture_files/libs/revealjs/dist/theme/;
+// this prefix leads from there back to the project root.
+$ftsrg-root: "../../../../../";
+
+$font-family-sans-serif: "Open Sans", "Segoe UI", Arial, sans-serif;
+$body-bg: #fff;
+$body-color: #000;
+$primary: $ftsrg-blue;
+$link-color: #0563C1;
+$link-color-hover: #0563C1;
+$selection-bg: lighten($ftsrg-blue, 45%);
+$selection-color: $body-color;
+
+$presentation-font-size-root: 36px;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-font-weight: 800;
+$presentation-heading-color: $ftsrg-title-color;
+$presentation-heading-line-height: 1.08;  // PPTX "90 %" of its 1.2 single spacing
+$presentation-h1-font-size: 72px;   // section slides (48 pt autofit to 90 % in the PPTX)
+$presentation-h2-font-size: 66px;   // slide titles (40 pt)
+$presentation-list-bullet-color: $body-color;
+
+$code-block-font-size: 0.5em;       // ~70 characters in half the slide width
+
+/*-- scss:rules --*/
+
+// ---------------------------------------------------------------- fonts
+// Bundled: the lecture-hall network is not guaranteed.
+$ftsrg-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+  U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+  U+FEFF, U+FFFD;
+$ftsrg-latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+  U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+  U+2113, U+2C60-2C7F, U+A720-A7FF;
+
+@each $style in normal, italic {
+  @each $subset, $range in (latin: $ftsrg-latin, latin-ext: $ftsrg-latin-ext) {
+    @font-face {
+      font-family: "Open Sans";
+      font-style: $style;
+      font-weight: 300 800;
+      font-display: block;
+      src: url("#{$ftsrg-root}assets/fonts/open-sans-#{$subset}-wght-#{$style}.woff2") format("woff2");
+      unicode-range: $range;
+    }
+  }
+}
+
+// ---------------------------------------------------------------- geometry
+$slide-h: 900px;
+$pad-x: 88px;              // text edge: 4.72 % placeholder + 0.1" inset
+$title-top: 46px;          // one-line title centred in the 4.6 %–15.1 % title box
+$body-top: 158px;          // body placeholder starts at 17.5 %
+$body-bottom: 820px;       // ...and ends at 91.2 %
+$footer-top: 842px;        // 93.6 %
+$footer-h: $slide-h - $footer-top;
+$slant: 22.6px;            // horizontal run of the "/" cut in the footer
+
+// ---------------------------------------------------------------- content slides
+// Every slide is a full 1600×900 box; its padding is the content area.
+// (A level-1 heading starts a vertical .stack that only wraps slides;
+// in print, each slide sits in a .pdf-page instead.)
+.reveal .slides section {
+  box-sizing: border-box;
+  height: 100%;
+}
+.reveal .slides section:not(.stack) {
+  padding: $title-top $pad-x ($slide-h - $body-bottom);
+}
+
+.reveal .slides section > h2 {
+  margin: 0 0 ($body-top - $title-top - $presentation-heading-line-height * $presentation-h2-font-size) 0;
+  font-size: $presentation-h2-font-size;
+  line-height: $presentation-heading-line-height;
+}
+
+// Quarto stretches a lone image with reveal's r-stretch, which sizes it against
+// the full slide width; keep it inside the side margins (and its aspect ratio).
+.reveal .slides section > img.r-stretch {
+  display: block;        // an inline image's line box would eat ~1 line of the space
+  margin: 0 auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.reveal a {
+  text-decoration: underline;
+}
+
+// Bullets: • at the text edge, text 30 px in; – one level down; generous
+// space between level-1 items, tight between level-2 items.
+.reveal .slides section ul {
+  display: block;
+  list-style: none;
+  margin: $presentation-block-margin 0;
+  padding-left: 0.8333em;
+
+  > li {
+    position: relative;
+    &::before {
+      content: "•";
+      position: absolute;
+      left: -0.8333em;
+    }
+    + li {
+      margin-top: 0.45em;
+    }
+  }
+
+  ul {
+    font-size: 0.8333em;   // 30 px
+    margin: 0.15em 0 0 1em;
+    padding-left: 1em;
+    > li::before {
+      content: "–";
+      left: -1em;
+    }
+    > li + li {
+      margin-top: 0.15em;
+    }
+  }
+}
+
+.reveal .slides section ol {
+  display: block;
+  margin: $presentation-block-margin 0 $presentation-block-margin 1em;
+  > li + li {
+    margin-top: 0.45em;
+  }
+}
+
+// Live cells (live-cells.lua): r-stretch gives the height, but reveal also sets
+// the full slide width inline; keep them exactly the content area.
+.reveal .slides section > iframe.live-cell {
+  display: block;
+  width: 100% !important;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+}
+
+// Grid of figures with mixed aspect ratios: ::: {.fig-grid layout-ncol=4}
+// Every cell gets the same image height (--fig-h), scaled down, never cropped.
+.reveal .fig-grid {
+  --fig-h: 270px;
+  img {
+    width: 100%;
+    height: var(--fig-h);
+    margin: 0;
+    object-fit: contain;
+  }
+  figcaption {
+    margin-top: 4px;
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
+// Inline SVG diagrams (assets/diagrams/*.svg, pulled in by an include inside a
+// ```{=html} block so they use the page fonts): drawn to fit a box of the content
+// width and --diagram-h height, centred.
+.reveal svg.diagram {
+  display: block;
+  width: 100%;
+  height: var(--diagram-h, 440px);
+  margin: 0 auto;
+}
+
+// Tables at the second-level text size, so rows stay on one or two lines
+.reveal .slides table {
+  font-size: 30px;
+}
+
+// Small explanatory text under a bullet or a figure, for readers of the deck
+// after the lecture: [text]{.small} or ::: small
+.reveal .slides section .small {
+  font-size: 21px;
+  line-height: 1.35;
+  color: #333;
+  p {
+    margin: 0 0 0.4em;
+  }
+}
+// Worked examples and "why it matters" text: between body and small
+.reveal .slides section .medium {
+  font-size: 26px;
+  line-height: 1.35;
+  p {
+    margin: 0 0 0.45em;
+  }
+  ul {
+    margin: 0.2em 0;
+  }
+  li + li {
+    margin-top: 0.2em;
+  }
+}
+.reveal .slides section .small table {
+  font-size: 22px;
+}
+.reveal .slides section span.small {
+  display: block;
+  margin-top: 4px;
+}
+
+// Screen vs print variants of the same content (e.g. an animation and its last
+// frame): {.screen-only} / {.print-only} on the two images
+html:not(.print-pdf) .reveal .print-only,
+html.print-pdf .reveal .screen-only {
+  display: none !important;
+}
+
+// A local video in a column: <video class="video-embed" controls poster=… src=…>
+.reveal .slides section video.video-embed {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  margin: 0;
+  background: #000;
+}
+
+// Callout box for annotating figures
+.reveal .bubble {
+  display: inline-block;
+  padding: 0.35em 0.8em;
+  border-radius: 8px;
+  background: $ftsrg-blue;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.3;
+  a {
+    color: #fff;
+  }
+  // Optional speech-bubble tail pointing at the annotated thing:
+  // [text]{.bubble .tail-down .absolute top=… left=… style="--tail-x: 120px"}
+  &.tail-down::after,
+  &.tail-up::after {
+    content: "";
+    position: absolute;
+    left: var(--tail-x, 50%);
+    transform: translateX(-50%);
+    border: 18px solid transparent;
+  }
+  &.tail-down::after {
+    top: 100%;
+    border-top-color: $ftsrg-blue;
+    border-bottom-width: 0;
+  }
+  &.tail-up::after {
+    bottom: 100%;
+    border-bottom-color: $ftsrg-blue;
+    border-top-width: 0;
+  }
+}
+.reveal .bubble:not(.absolute) {
+  position: relative;
+}
+
+// ---------------------------------------------------------------- live-cell extras
+// A "try this" hint and a colour legend for a live cell, stacked at the bottom of
+// its output column, in the white space the output image (900×525, scaled to the
+// column) leaves below itself:
+//   :::: cell-aside
+//   ::: try
+//   ::: legend
+//   ::::
+// The box is absolutely positioned, so reveal's r-stretch ignores it and the
+// live-cell iframe keeps the whole content area.
+$live-output-left: 810px;   // left edge of a live cell's output column
+
+.reveal .slides section .cell-aside {
+  position: absolute;
+  left: $live-output-left;
+  right: $pad-x;
+  bottom: $slide-h - $body-bottom;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0;
+  > .legend {
+    align-self: flex-end;
+  }
+}
+
+// Colour legend: ::: legend (in a cell-aside), or ::: {.legend .top} beside a short
+// slide title, for wide-layout cells whose output fills the width
+.reveal .slides section .legend {
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+  p {
+    margin: 0;
+  }
+  &.top {
+    position: absolute;
+    right: $pad-x;
+    top: 70px;
+  }
+  .ramp {           // []{.ramp style="--ramp: linear-gradient(to right, …);"}
+    display: block;
+    width: 320px;
+    height: 16px;
+    margin: 4px 0 2px;
+    border: 1px solid #888;
+    background: var(--ramp);
+  }
+  .ends {           // [[low]{} [high]{}]{.ends}
+    display: flex;
+    justify-content: space-between;
+    width: 322px;
+  }
+  .swatch {         // [label]{.swatch style="--c: aqua;"}
+    white-space: nowrap;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 5px;
+      border: 1px solid #666;
+      background: var(--c);
+      vertical-align: -1px;
+    }
+    + .swatch {
+      margin-left: 8px;
+    }
+  }
+}
+
+// "Try this" hint, as in technical books: grey rounded box with a light bulb.
+// In a cell-aside; for wide-layout cells ::: {.try .inline style="top: …px;"}
+// puts it right of the Run button instead.
+.reveal .slides section .try {
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 9px 16px 9px 50px;
+  border-radius: 10px;
+  background: #EDEDED url("#{$ftsrg-root}assets/icons/lightbulb.svg") 14px 50% / 26px no-repeat;
+  color: #222;
+  font-size: 20px;
+  line-height: 1.35;
+  p {
+    margin: 0;
+  }
+  code {
+    font-size: 0.95em;
+  }
+  &.inline {
+    position: absolute;
+    right: $pad-x;
+    max-width: 1000px;
+  }
+}
+
+// Source line under figures, bottom-left of the content area; the slide's
+// bottom padding grows so that stretched figures end above it.
+.reveal .slides section:has(> .source) {
+  padding-bottom: $slide-h - $body-bottom + 30px;
+}
+.reveal .slides section .source {
+  position: absolute;
+  left: $pad-x;
+  bottom: $slide-h - $body-bottom;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+// ---------------------------------------------------------------- footer
+// Grey bar with a "/" cut, white gap, gradient tab with the white logo.
+// Drawn on .slides so it scales with the deck (or on every page in print).
+@mixin ftsrg-footer {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: $footer-top;
+    height: $footer-h;
+    z-index: 20;
+    pointer-events: none;
+  }
+  &::before {
+    left: 0;
+    width: 1478.2px;
+    background: $ftsrg-grey;
+    clip-path: polygon(0 0, 100% 0, calc(100% - #{$slant}) 100%, 0 100%);
+  }
+  &::after {
+    left: 1471px;
+    width: 129px;
+    // logo PNG has transparent padding; size/offset reproduce the PPTX crop
+    background:
+      url("#{$ftsrg-root}assets/brand/ftsrg-logo-white.png") 4.8px -40.8px / 139.5px 139px no-repeat,
+      linear-gradient(154deg, $ftsrg-tab-from 32%, $ftsrg-tab-to 100%);
+    clip-path: polygon($slant 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.reveal .slides {
+  @include ftsrg-footer;
+}
+
+// reveal's slide number lives outside .slides, in window coordinates:
+// centre it on the bar via the deck scale that reveal publishes.
+// (.reveal-viewport: outweigh quarto-support's footer.css, which loads later)
+.reveal-viewport .reveal .slide-number {
+  left: calc(50% - 1.3px * var(--slide-scale, 1));   // PPTX: centre at 49.92 %
+  right: auto;
+  bottom: auto;
+  top: calc(50% + (#{$footer-top + 0.5 * $footer-h} - #{0.5 * $slide-h}) * var(--slide-scale, 1));
+  transform: translate(-50%, -50%);
+  padding: 0;
+  background: transparent;
+  color: #000;
+  font-family: $font-family-sans-serif;
+  font-size: calc(20px * var(--slide-scale, 1));
+  line-height: 1;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.reveal.overview .slides::before,
+.reveal.overview .slides::after,
+.reveal.overview .slide-number {
+  display: none !important;
+}
+
+// The menu stays available on the M key; its button would sit on the footer.
+.reveal .slide-menu-button {
+  display: none;
+}
+
+// ---------------------------------------------------------------- section slides
+// Background comes from ftsrg.lua (data-background on every level-1 slide).
+.reveal .slides section.level1 > h1 {
+  position: absolute;
+  left: $pad-x;
+  top: 51.5%;
+  transform: translateY(-50%);
+  width: 652px;          // stays left of the diagonal edge
+  margin: 0;
+  color: #fff;
+  text-align: left;
+}
+
+// ---------------------------------------------------------------- title slide
+// An explicit first slide: ## Title {.ftsrg-title data-state="ftsrg-title" ...}
+.reveal .slides section.ftsrg-title {
+  > h2 {
+    position: absolute;
+    left: 145px;
+    bottom: $slide-h - 353px;
+    width: 1300px;
+    margin: 0;
+    color: #fff;
+    font-size: 73px;     // 44 pt
+  }
+
+  .course {
+    position: absolute;
+    left: 145px;
+    top: 390px;
+    width: 1300px;
+    color: #fff;
+    font-size: 33px;     // 20 pt
+    p {
+      margin: 0;
+      line-height: 1.7;
+      + p {
+        margin-top: 1.7em;
+      }
+    }
+    a {
+      color: #fff;
+    }
+  }
+
+  .institution {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 797px;
+    transform: translateY(-50%);
+    margin: 0;
+    color: #000;
+    font-size: 26px;     // PPTX: 30 px, but the department's new name is longer
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .logo-bme img {
+    position: absolute;
+    left: 30.2px;
+    top: 738.2px;
+    width: 347.7px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+  }
+
+  // Crop frame of the PPTX; the PNG itself has wide transparent margins
+  .logo-ftsrg {
+    position: absolute;
+    left: 1290.6px;
+    top: 736.6px;
+    width: 210.6px;
+    height: 121.2px;
+    overflow: hidden;
+    img {
+      position: absolute;
+      left: -66.1px;
+      top: -111.7px;
+      width: 345.6px;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+    }
+  }
+}
+
+// No footer or slide number on the title slide
+// (!important: reveal sets display inline on the slide number; in print the
+// state class stays on, so pages are handled separately below)
+html:not(.print-pdf) .reveal-viewport.ftsrg-title .reveal {
+  .slides::before,
+  .slides::after,
+  .slide-number {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------- print (?print-pdf)
+html.print-pdf {
+  .reveal .slides::before,
+  .reveal .slides::after {
+    display: none;
+  }
+  // reveal's print CSS zeroes all slide padding with !important, and it would
+  // push "center" slides (section slides: absolute h1 only) down the page
+  &.reveal-print .reveal .slides section:not(.stack) {
+    top: 0 !important;
+    padding: $title-top $pad-x ($slide-h - $body-bottom) !important;
+    &:has(> .source) {
+      padding-bottom: $slide-h - $body-bottom + 30px !important;
+    }
+  }
+  // Chrome's page breaking ignores transforms: the centred (translateY(-50%))
+  // institution block would reach past the page edge and lose its last line
+  .reveal .slides section.ftsrg-title .institution {
+    top: 734.3px;          // = 797px − half of its 125.4px height
+    transform: none;
+  }
+  // A printed video is its poster; hide the player controls
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+  .reveal .slides .pdf-page {
+    @include ftsrg-footer;
+    &:has(> section.ftsrg-title)::before,
+    &:has(> section.ftsrg-title)::after,
+    &:has(> section.ftsrg-title) .slide-number-pdf {
+      display: none;
+    }
+  }
+  .reveal .slide-number-pdf {
+    top: $footer-top + 0.5 * $footer-h;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+  }
+}

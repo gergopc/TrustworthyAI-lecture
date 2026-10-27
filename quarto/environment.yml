@@ -1,0 +1,15 @@
+# conda env create -f environment.yml   then   conda activate census
+name: census
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - datashader>=0.16
+  - holoviews>=1.19
+  - panel>=1.5          # live.py uses panel.custom.JSComponent
+  - dask>=2024.1
+  - pyarrow
+  - colorcet
+  - xyzservices
+  - matplotlib          # only for the "hot" comparison slide
+  - quarto              # the deck tooling lives in the env too

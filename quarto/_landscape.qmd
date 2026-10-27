@@ -1,0 +1,64 @@
+# Tools, 2026
+
+::: notes
+Where today's tools sit, ordered by where the computation happens.
+:::
+
+## Where the computation happens
+
+::: {style="--diagram-h: 560px"}
+```{=html}
+{{< include assets/diagrams/tool-landscape.svg >}}
+```
+:::
+
+::: notes
+- Read it with the architecture slide in mind: the further right, the closer the work
+  runs to the data.
+- Browser: Plotly, Altair / Vega-Lite, deck.gl (+ pydeck) and lonboard (deck.gl with
+  GeoArrow in Jupyter). The data travels to the browser; WebGL helps, but the browser's
+  memory is the limit.
+- Python server or kernel: HoloViz (Datashader, HoloViews, hvPlot, Panel) and Dask:
+  today's demo.
+- Query engines: DuckDB, Polars (its GPU engine, still open beta, runs on cuDF), Mosaic,
+  VegaFusion.
+- GPU: RAPIDS cuDF (also cudf.pandas: pandas on the GPU without code changes).
+  Datashader itself runs on CPU, Dask or GPU.
+- Versions checked September 2026: plotly.py 7.1, Altair 6.3 / Vega-Lite 6.4, deck.gl
+  9.4, lonboard 0.16, Datashader 0.19, HoloViews 1.23, hvPlot 0.12, Panel 1.9, Dask
+  2026.8, DuckDB 1.5, Polars 1.44, Mosaic 0.31, VegaFusion 2.0, cuDF 26.08.
+- Left off on purpose: plotly-resampler (maintenance mode; successor FlexViz) and
+  cuxfilter (sunset by RAPIDS, archived July 2026).
+- Which datashader glyphs work on which containers (pandas, Dask, cuDF, SpatialPandas,
+  xarray): datashader.org/user_guide/Performance.html#data-objects
+:::
+
+## HoloViz: a cooperating collection
+
+![](assets/legacy/s10-holoviz-tools.png){.absolute .nostretch top=390 left=198 width=1203 fig-alt="HoloViz libraries: Panel, hvPlot, HoloViews, GeoViews, Datashader, Lumen, Param, Colorcet"}
+
+[Quick interactive plots]{.bubble .tail-down .absolute top=272 left=253 style="--tail-x: 130px;"}
+
+[Rasterization for Big Data]{.bubble .tail-down .absolute top=272 left=701 style="--tail-x: 180px;"}
+
+[Annotate data for visualization\
+("easy interactive datashader")]{.bubble .tail-up .absolute top=600 left=258 style="--tail-x: 270px;"}
+
+[Data-driven dashboards]{.bubble .tail-up .absolute top=600 left=898 style="--tail-x: 145px;"}
+
+::: source
+[holoviz.org](https://holoviz.org)
+:::
+
+::: notes
+- HoloViz: eight libraries that work together (the site lists exactly these, checked
+  September 2026).
+- hvPlot: one-line interactive plots from pandas, xarray, Dask and more.
+- Datashader: rasterizes huge data on the server into images or aggregates.
+- HoloViews: annotate the data with what it means and the plot follows; with
+  datashade / rasterize it makes datashader interactive (the census maps).
+- Lumen: data-driven dashboards from YAML specs (recent versions add LLM-assisted
+  exploration).
+- Panel: the app layer (the live cells run on it); Param: declarative parameters;
+  Colorcet: perceptually uniform colormaps (fire); GeoViews: geographic HoloViews.
+:::

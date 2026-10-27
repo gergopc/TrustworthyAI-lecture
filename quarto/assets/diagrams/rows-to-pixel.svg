@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 610" id="rows-to-pixel" class="diagram" role="img"
+ aria-label="A huge table drawn as a slab in perspective; scattered rows whose x and y fall into the same pixel are highlighted, their value and group columns marked for aggregation; beams from those rows converge on one lit pixel of a tilted screen grid">
+<style>
+#rows-to-pixel .h{font-size:21px;font-weight:700;fill:#2F2D2E;text-anchor:middle}
+#rows-to-pixel .lb{font-size:21px;font-weight:700;text-anchor:middle}
+#rows-to-pixel .st{font-size:21px;fill:#2F2D2E}
+#rows-to-pixel .it{font-size:20px;font-style:italic;fill:#2F2D2E}
+#rows-to-pixel .g{stroke:#A7A8A7;stroke-width:1.2;fill:none}
+#rows-to-pixel .beam{stroke:#1446A0;stroke-width:2;stroke-opacity:.45}
+</style>
+
+<!-- column brackets and labels (steps 1 and 2) -->
+<text x="68" y="36" class="lb" fill="#1446A0" text-anchor="start" style="text-anchor:start">① which pixel?</text>
+<path d="M72,56 v-10 h152 v10" fill="none" stroke="#1446A0" stroke-width="2"/>
+<text x="236" y="36" class="lb" fill="#C45F00" style="text-anchor:start">② what to aggregate</text>
+<path d="M228,56 v-10 h152 v10" fill="none" stroke="#C45F00" stroke-width="2"/>
+
+<!-- the table as a slab: top and side faces, then the front face -->
+<polygon points="70,92 460,92 496,66 106,66" fill="#E6E6E6" stroke="#A7A8A7" stroke-width="1.2"/>
+<polygon points="460,92 496,66 496,500 460,526" fill="#D5D5D5" stroke="#A7A8A7" stroke-width="1.2"/>
+<rect x="70" y="92" width="390" height="434" fill="#fff" stroke="#A7A8A7" stroke-width="1.5"/>
+<rect x="70" y="92" width="390" height="34" fill="#A7A8A7" fill-opacity="0.35"/>
+<text x="109" y="116" class="h">x</text><text x="187" y="116" class="h">y</text><text x="265" y="116" class="h">value</text><text x="343" y="116" class="h">group</text><text x="421" y="116" class="h">…</text>
+
+<!-- rows that land in the lit pixel (scattered through the table) -->
+<g>
+<rect x="70" y="154" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="154" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="154" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="154" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="210" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="210" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="210" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="210" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="224" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="224" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="224" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="224" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="294" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="294" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="294" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="294" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="378" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="378" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="378" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="378" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="420" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="420" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="420" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="420" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+<rect x="70" y="476" width="390" height="14" fill="#1446A0" fill-opacity="0.12"/><rect x="70" y="476" width="156" height="14" fill="#1446A0" fill-opacity="0.3"/><rect x="226" y="476" width="78" height="14" fill="#FB8B24" fill-opacity="0.5"/><rect x="304" y="476" width="78" height="14" fill="#522B47" fill-opacity="0.25"/>
+</g>
+<!-- grid lines of the front face -->
+<g class="g">
+<path d="M148,92 V526 M226,92 V526 M304,92 V526 M382,92 V526"/>
+<path d="M70,140 H460 M70,154 H460 M70,168 H460 M70,182 H460 M70,196 H460 M70,210 H460 M70,224 H460 M70,238 H460 M70,252 H460 M70,266 H460 M70,280 H460 M70,294 H460 M70,308 H460 M70,322 H460 M70,336 H460 M70,350 H460 M70,364 H460 M70,378 H460 M70,392 H460 M70,406 H460 M70,420 H460 M70,434 H460 M70,448 H460 M70,462 H460 M70,476 H460 M70,490 H460 M70,504 H460"/>
+</g>
+<text x="265" y="560" class="it" text-anchor="middle">⋮  hundreds of millions of rows</text>
+
+<!-- beams from the highlighted rows to the lit pixel -->
+<g class="beam">
+<line x1="462" y1="161" x2="1139" y2="249"/><line x1="462" y1="217" x2="1139" y2="249"/><line x1="462" y1="231" x2="1139" y2="249"/>
+<line x1="462" y1="301" x2="1139" y2="249"/><line x1="462" y1="385" x2="1139" y2="249"/><line x1="462" y1="427" x2="1139" y2="249"/>
+<line x1="462" y1="483" x2="1139" y2="249"/>
+</g>
+<text x="560" y="150" class="it">all rows that fall into pixel (i, j)</text>
+
+<!-- the screen: a 12 × 8 pixel grid, sheared for a 3D look -->
+<g transform="matrix(1 0.15 -0.15 1 930 110)">
+<rect x="-14" y="-14" width="388" height="268" rx="8" fill="#2F2D2E"/>
+<rect x="0" y="0" width="360" height="240" fill="#000"/>
+<g fill="#FF7E00">
+<rect x="60" y="30" width="30" height="30" fill-opacity="0.35"/><rect x="90" y="30" width="30" height="30" fill-opacity="0.2"/>
+<rect x="150" y="60" width="30" height="30" fill-opacity="0.3"/><rect x="180" y="90" width="30" height="30" fill-opacity="0.55"/>
+<rect x="240" y="90" width="30" height="30" fill-opacity="0.45"/><rect x="210" y="120" width="30" height="30" fill-opacity="0.35"/>
+<rect x="270" y="150" width="30" height="30" fill-opacity="0.25"/><rect x="120" y="150" width="30" height="30" fill-opacity="0.2"/>
+<rect x="30" y="180" width="30" height="30" fill-opacity="0.3"/><rect x="300" y="60" width="30" height="30" fill-opacity="0.2"/>
+</g>
+<g stroke="#555" stroke-width="1">
+<path d="M30,0 V240 M60,0 V240 M90,0 V240 M120,0 V240 M150,0 V240 M180,0 V240 M210,0 V240 M240,0 V240 M270,0 V240 M300,0 V240 M330,0 V240"/>
+<path d="M0,30 H360 M0,60 H360 M0,90 H360 M0,120 H360 M0,150 H360 M0,180 H360 M0,210 H360"/>
+</g>
+<rect x="210" y="90" width="30" height="30" fill="#FFD508" stroke="#fff" stroke-width="3"/>
+</g>
+<text x="1110" y="455" class="it" text-anchor="middle">the screen: one bin per pixel</text>
+
+<!-- the three steps -->
+<text x="840" y="512" class="st"><tspan font-weight="700" fill="#1446A0">① project:</tspan> x, y decide the pixel a row falls into</text>
+<text x="840" y="546" class="st"><tspan font-weight="700" fill="#C45F00">② aggregate:</tspan> count, mean(value), count per group</text>
+<text x="840" y="580" class="st"><tspan font-weight="700" fill="#960018">③ shade:</tspan> the aggregate sets colour, brightness, alpha</text>
+</svg>

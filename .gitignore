@@ -1,0 +1,15 @@
+# Census data (2.1 GB, or a symlink to it): downloaded separately, see quarto/README
+quarto/data
+
+# NASA's CO2 video for the 3D slide (≈100 MB): downloaded separately, see quarto/README
+quarto/assets/video/
+
+# Build output: regenerate with `quarto render lecture.qmd`
+.quarto/
+__pycache__/
+quarto/lecture.html
+quarto/lecture_files/
+
+# Claude Code local state
+.cc-writes/
+settings.local.json

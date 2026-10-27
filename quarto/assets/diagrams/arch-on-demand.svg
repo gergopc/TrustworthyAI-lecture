@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 330" id="arch-on-demand" class="diagram" role="img"
+ aria-label="Browser sends the new x and y ranges to a Python server on every zoom or pan; the server runs datashader over all rows of the data and returns an image or one value per pixel">
+<defs><marker id="arch-on-demand-k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2F2D2E"/></marker><marker id="arch-on-demand-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#960018"/></marker></defs>
+<style>#arch-on-demand .t{font-size:24px;font-weight:700;fill:#2F2D2E;text-anchor:middle} #arch-on-demand .s{font-size:20px;fill:#2F2D2E;text-anchor:middle} #arch-on-demand .a{font-size:20px;font-style:italic;fill:#2F2D2E;text-anchor:middle} #arch-on-demand .ab{font-size:20px;font-style:italic;fill:#960018;text-anchor:middle} #arch-on-demand .a, #arch-on-demand .ab{paint-order:stroke;stroke:#fff;stroke-width:7px;stroke-linejoin:round} #arch-on-demand .zb{font-size:22px;font-weight:700;fill:#960018;text-anchor:middle} #arch-on-demand .zs{font-size:22px;font-weight:700;fill:#1446A0;text-anchor:middle} #arch-on-demand .band{font-size:20px;font-weight:700;fill:#522B47}</style>
+<text x="170" y="30" class="zs">Small Data</text>
+<text x="1010" y="30" class="zb">Big Data</text>
+<line x1="485" y1="10" x2="485" y2="330" stroke="#FB8B24" stroke-width="3" stroke-dasharray="10 7"/>
+<rect x="30" y="70" width="280" height="190" rx="10" fill="#fff" stroke="#1446A0" stroke-width="2.5"/>
+<path d="M30,96 v-16 a10,10 0 0 1 10,-10 h260 a10,10 0 0 1 10,10 v16 z" fill="#1446A0" fill-opacity="0.15"/>
+<circle cx="46" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="60" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="74" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<rect x="70" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<rect x="70" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="70" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.28"/>
+<rect x="106" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.42"/>
+<rect x="106" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.60"/>
+<rect x="106" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.48"/>
+<rect x="142" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.59"/>
+<rect x="142" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.85"/>
+<rect x="142" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.68"/>
+<rect x="178" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="178" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.50"/>
+<rect x="178" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.40"/>
+<rect x="214" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.21"/>
+<rect x="214" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.30"/>
+<rect x="214" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<text x="170.0" y="290" class="t">Browser</text>
+<text x="170.0" y="316" class="s">a Bokeh plot</text>
+<rect x="665" y="70" width="330" height="180" rx="10" fill="#960018" fill-opacity="0.06" stroke="#A7A8A7" stroke-width="2"/>
+<text x="830.0" y="106" class="t">Python server</text>
+<text x="830.0" y="142" class="s">HoloViews + datashader:</text>
+<text x="830.0" y="170" class="s">aggregate + shade the</text>
+<text x="830.0" y="198" class="s">visible x, y range</text>
+<path d="M1130,78 a120.0,18 0 0 0 240,0 v174 a120.0,18 0 0 1 -240,0 z" fill="#960018" fill-opacity="0.08" stroke="#A7A8A7" stroke-width="2"/>
+<ellipse cx="1250.0" cy="78" rx="120.0" ry="18" fill="#F3E6E8" stroke="#A7A8A7" stroke-width="2"/>
+<text x="1250.0" y="132" class="t">all rows</text>
+<text x="1250.0" y="164" class="s">300 M in RAM (Dask),</text>
+<text x="1250.0" y="192" class="s">or Parquet on disk</text>
+<line x1="314" y1="120" x2="659" y2="120" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-on-demand-k)"/>
+<text x="486.5" y="108.0" class="a">① zoom / pan: new x, y ranges</text>
+<line x1="659" y1="210" x2="314" y2="210" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-on-demand-k)"/>
+<text x="486.5" y="244.0" class="a">③ an image, or ~1 value per pixel</text>
+<line x1="1001" y1="165" x2="1124" y2="165" stroke="#960018" stroke-width="5" marker-start="url(#arch-on-demand-r)" marker-end="url(#arch-on-demand-r)"/>
+<text x="1062.5" y="153.0" class="ab">② full pass</text>
+</svg>

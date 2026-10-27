@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 776 358" id="bin-ordering" class="diagram" role="img"
+ aria-label="A 4 by 4 grid of bins numbered in row-major order and in Z-order; the top-left 2 by 2 block gets indices 0, 1, 4, 5 in row-major order but 0 to 3 in Z-order">
+<style>#bin-ordering .t{font-size:26px;font-weight:700;fill:#2F2D2E;text-anchor:middle} #bin-ordering .n{font-size:20px;fill:#2F2D2E;text-anchor:middle}</style>
+<text x="184.0" y="38" text-anchor="middle" class="t">Row-major (the formula)</text>
+<rect x="40" y="60" width="144" height="144" fill="#1446A0" fill-opacity="0.13"/>
+<line x1="40" y1="60" x2="40" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="40" y1="60" x2="328" y2="60" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="112" y1="60" x2="112" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="40" y1="132" x2="328" y2="132" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="184" y1="60" x2="184" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="40" y1="204" x2="328" y2="204" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="256" y1="60" x2="256" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="40" y1="276" x2="328" y2="276" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="328" y1="60" x2="328" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="40" y1="348" x2="328" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<polyline points="76.0,96.0 148.0,96.0 220.0,96.0 292.0,96.0 76.0,168.0 148.0,168.0 220.0,168.0 292.0,168.0 76.0,240.0 148.0,240.0 220.0,240.0 292.0,240.0 76.0,312.0 148.0,312.0 220.0,312.0 292.0,312.0" fill="none" stroke="#1446A0" stroke-width="4" stroke-linejoin="round" opacity="0.55"/>
+<circle cx="76.0" cy="96.0" r="7" fill="#960018"/>
+<text x="90.0" y="86.0" class="n">0</text>
+<text x="162.0" y="86.0" class="n">1</text>
+<text x="234.0" y="86.0" class="n">2</text>
+<text x="306.0" y="86.0" class="n">3</text>
+<text x="90.0" y="158.0" class="n">4</text>
+<text x="162.0" y="158.0" class="n">5</text>
+<text x="234.0" y="158.0" class="n">6</text>
+<text x="306.0" y="158.0" class="n">7</text>
+<text x="90.0" y="230.0" class="n">8</text>
+<text x="162.0" y="230.0" class="n">9</text>
+<text x="234.0" y="230.0" class="n">10</text>
+<text x="306.0" y="230.0" class="n">11</text>
+<text x="90.0" y="302.0" class="n">12</text>
+<text x="162.0" y="302.0" class="n">13</text>
+<text x="234.0" y="302.0" class="n">14</text>
+<text x="306.0" y="302.0" class="n">15</text>
+<text x="592.0" y="38" text-anchor="middle" class="t">Z-order (Morton)</text>
+<rect x="448" y="60" width="144" height="144" fill="#1446A0" fill-opacity="0.13"/>
+<line x1="448" y1="60" x2="448" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="448" y1="60" x2="736" y2="60" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="520" y1="60" x2="520" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="448" y1="132" x2="736" y2="132" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="592" y1="60" x2="592" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="448" y1="204" x2="736" y2="204" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="664" y1="60" x2="664" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="448" y1="276" x2="736" y2="276" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="736" y1="60" x2="736" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<line x1="448" y1="348" x2="736" y2="348" stroke="#A7A8A7" stroke-width="2"/>
+<polyline points="484.0,96.0 556.0,96.0 484.0,168.0 556.0,168.0 628.0,96.0 700.0,96.0 628.0,168.0 700.0,168.0 484.0,240.0 556.0,240.0 484.0,312.0 556.0,312.0 628.0,240.0 700.0,240.0 628.0,312.0 700.0,312.0" fill="none" stroke="#1446A0" stroke-width="4" stroke-linejoin="round" opacity="0.55"/>
+<circle cx="484.0" cy="96.0" r="7" fill="#960018"/>
+<text x="498.0" y="86.0" class="n">0</text>
+<text x="570.0" y="86.0" class="n">1</text>
+<text x="498.0" y="158.0" class="n">2</text>
+<text x="570.0" y="158.0" class="n">3</text>
+<text x="642.0" y="86.0" class="n">4</text>
+<text x="714.0" y="86.0" class="n">5</text>
+<text x="642.0" y="158.0" class="n">6</text>
+<text x="714.0" y="158.0" class="n">7</text>
+<text x="498.0" y="230.0" class="n">8</text>
+<text x="570.0" y="230.0" class="n">9</text>
+<text x="498.0" y="302.0" class="n">10</text>
+<text x="570.0" y="302.0" class="n">11</text>
+<text x="642.0" y="230.0" class="n">12</text>
+<text x="714.0" y="230.0" class="n">13</text>
+<text x="642.0" y="302.0" class="n">14</text>
+<text x="714.0" y="302.0" class="n">15</text>
+</svg>

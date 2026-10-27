@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 330" id="arch-query-engine" class="diagram" role="img"
+ aria-label="Each view in the browser sends SQL with a GROUP BY over binned x and y to a query engine such as DuckDB or DataFusion, which scans the tables and returns a small result with one row per bin; the engine can run on a server, in the kernel or in the browser">
+<defs><marker id="arch-query-engine-k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2F2D2E"/></marker><marker id="arch-query-engine-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#960018"/></marker></defs>
+<style>#arch-query-engine .t{font-size:24px;font-weight:700;fill:#2F2D2E;text-anchor:middle} #arch-query-engine .s{font-size:20px;fill:#2F2D2E;text-anchor:middle} #arch-query-engine .a{font-size:20px;font-style:italic;fill:#2F2D2E;text-anchor:middle} #arch-query-engine .ab{font-size:20px;font-style:italic;fill:#960018;text-anchor:middle} #arch-query-engine .a, #arch-query-engine .ab{paint-order:stroke;stroke:#fff;stroke-width:7px;stroke-linejoin:round} #arch-query-engine .zb{font-size:22px;font-weight:700;fill:#960018;text-anchor:middle} #arch-query-engine .zs{font-size:22px;font-weight:700;fill:#1446A0;text-anchor:middle} #arch-query-engine .band{font-size:20px;font-weight:700;fill:#522B47}</style>
+<text x="170" y="30" class="zs">Small Data</text>
+<text x="1010" y="30" class="zb">Big Data</text>
+<line x1="485" y1="10" x2="485" y2="330" stroke="#FB8B24" stroke-width="3" stroke-dasharray="10 7"/>
+<rect x="30" y="70" width="280" height="190" rx="10" fill="#fff" stroke="#1446A0" stroke-width="2.5"/>
+<path d="M30,96 v-16 a10,10 0 0 1 10,-10 h260 a10,10 0 0 1 10,10 v16 z" fill="#1446A0" fill-opacity="0.15"/>
+<circle cx="46" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="60" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="74" cy="83" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<rect x="70" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<rect x="70" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="70" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.28"/>
+<rect x="106" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.42"/>
+<rect x="106" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.60"/>
+<rect x="106" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.48"/>
+<rect x="142" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.59"/>
+<rect x="142" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.85"/>
+<rect x="142" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.68"/>
+<rect x="178" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="178" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.50"/>
+<rect x="178" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.40"/>
+<rect x="214" y="118" width="34" height="28" fill="#1446A0" fill-opacity="0.21"/>
+<rect x="214" y="148" width="34" height="28" fill="#1446A0" fill-opacity="0.30"/>
+<rect x="214" y="178" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<text x="170.0" y="290" class="t">Browser</text>
+<text x="170.0" y="316" class="s">linked views (Mosaic, Altair)</text>
+<rect x="665" y="60" width="350" height="190" rx="10" fill="#960018" fill-opacity="0.06" stroke="#A7A8A7" stroke-width="2"/>
+<text x="840.0" y="96" class="t">Query engine</text>
+<text x="840.0" y="132" class="s">DuckDB, DataFusion:</text>
+<text x="840.0" y="160" class="s">columnar, vectorized,</text>
+<text x="840.0" y="188" class="s">pre-aggregated tables</text>
+<text x="840" y="285" class="s">runs on a server, in the kernel, or in the browser</text>
+<path d="M1140,78 a115.0,18 0 0 0 230,0 v174 a115.0,18 0 0 1 -230,0 z" fill="#960018" fill-opacity="0.08" stroke="#A7A8A7" stroke-width="2"/>
+<ellipse cx="1255.0" cy="78" rx="115.0" ry="18" fill="#F3E6E8" stroke="#A7A8A7" stroke-width="2"/>
+<text x="1255.0" y="132" class="t">tables</text>
+<text x="1255.0" y="164" class="s">Parquet, a database</text>
+<line x1="314" y1="120" x2="659" y2="120" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-query-engine-k)"/>
+<text x="486.5" y="108.0" class="a">① SQL: GROUP BY bin(x), bin(y)</text>
+<line x1="659" y1="210" x2="314" y2="210" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-query-engine-k)"/>
+<text x="486.5" y="244.0" class="a">② a small result: a row per bin</text>
+<line x1="1021" y1="165" x2="1134" y2="165" stroke="#960018" stroke-width="5" marker-start="url(#arch-query-engine-r)" marker-end="url(#arch-query-engine-r)"/>
+<text x="1077.5" y="153.0" class="ab">scan</text>
+</svg>

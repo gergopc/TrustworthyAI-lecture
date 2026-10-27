@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 300" id="summary-merge" class="diagram" role="img"
+ aria-label="The values 2, 3, 5 in partition A and 1, 4 in partition B. Distributive: sums 10 and 5 add up to the true sum 15. Algebraic: the states (n 3, sum 10) and (n 2, sum 5) merge to (n 5, sum 15), mean 3, while the mean of the means would be 2.92. Holistic: the medians 3 and 2.5 give 2.75, but the true median is 3">
+<defs><marker id="sm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2F2D2E"/></marker></defs>
+<style>
+#summary-merge .t{font-size:23px;font-weight:700}
+#summary-merge .v{font-size:21px;fill:#2F2D2E;text-anchor:middle}
+#summary-merge .p{font-size:21px;fill:#2F2D2E;text-anchor:middle}
+#summary-merge .m{font-size:21px;font-weight:700;fill:#2F2D2E;text-anchor:middle}
+#summary-merge .n{font-size:18px;font-style:italic;fill:#2F2D2E;text-anchor:middle}
+#summary-merge .ok{fill:#1446A0} #summary-merge .bad{fill:#960018}
+#summary-merge .box{fill:#fff;stroke:#A7A8A7;stroke-width:1.5}
+#summary-merge .ar{stroke:#2F2D2E;stroke-width:1.8;marker-end:url(#sm-arrow)}
+</style>
+
+<!-- Distributive, x0 = 20 -->
+<text x="20" y="26" class="t" fill="#1446A0">Distributive: sum, count</text>
+<rect x="20" y="44" width="200" height="40" rx="8" class="box"/><text x="120" y="71" class="v">A: 2, 3, 5</text>
+<rect x="260" y="44" width="180" height="40" rx="8" class="box"/><text x="350" y="71" class="v">B: 1, 4</text>
+<line x1="120" y1="84" x2="120" y2="116" class="ar"/><line x1="350" y1="84" x2="350" y2="116" class="ar"/>
+<rect x="20" y="120" width="200" height="40" rx="8" fill="#1446A0" fill-opacity="0.12"/><text x="120" y="147" class="p">Σ 10, n 3</text>
+<rect x="260" y="120" width="180" height="40" rx="8" fill="#1446A0" fill-opacity="0.12"/><text x="350" y="147" class="p">Σ 5, n 2</text>
+<line x1="120" y1="160" x2="190" y2="194" class="ar"/><line x1="350" y1="160" x2="280" y2="194" class="ar"/>
+<rect x="90" y="198" width="260" height="42" rx="8" fill="#1446A0" fill-opacity="0.22"/><text x="220" y="226" class="m">Σ 15, n 5 <tspan class="ok">✓</tspan></text>
+<text x="230" y="276" class="n">just add the parts</text>
+
+<!-- Algebraic, x0 = 480 -->
+<text x="480" y="26" class="t" fill="#522B47">Algebraic: mean</text>
+<rect x="480" y="44" width="200" height="40" rx="8" class="box"/><text x="580" y="71" class="v">A: 2, 3, 5</text>
+<rect x="720" y="44" width="180" height="40" rx="8" class="box"/><text x="810" y="71" class="v">B: 1, 4</text>
+<line x1="580" y1="84" x2="580" y2="116" class="ar"/><line x1="810" y1="84" x2="810" y2="116" class="ar"/>
+<rect x="480" y="120" width="200" height="40" rx="8" fill="#522B47" fill-opacity="0.12"/><text x="580" y="147" class="p">(n 3, Σ 10)</text>
+<rect x="720" y="120" width="180" height="40" rx="8" fill="#522B47" fill-opacity="0.12"/><text x="810" y="147" class="p">(n 2, Σ 5)</text>
+<line x1="580" y1="160" x2="650" y2="194" class="ar"/><line x1="810" y1="160" x2="740" y2="194" class="ar"/>
+<rect x="520" y="198" width="340" height="42" rx="8" fill="#522B47" fill-opacity="0.2"/><text x="690" y="226" class="m">(n 5, Σ 15) → mean 3 <tspan class="ok">✓</tspan></text>
+<text x="690" y="276" class="n">carry (n, Σ); the mean of the means, 2.92, is wrong</text>
+
+<!-- Holistic, x0 = 960 -->
+<text x="960" y="26" class="t" fill="#960018">Holistic: median</text>
+<rect x="960" y="44" width="200" height="40" rx="8" class="box"/><text x="1060" y="71" class="v">A: 2, 3, 5</text>
+<rect x="1200" y="44" width="180" height="40" rx="8" class="box"/><text x="1290" y="71" class="v">B: 1, 4</text>
+<line x1="1060" y1="84" x2="1060" y2="116" class="ar"/><line x1="1290" y1="84" x2="1290" y2="116" class="ar"/>
+<rect x="960" y="120" width="200" height="40" rx="8" fill="#960018" fill-opacity="0.1"/><text x="1060" y="147" class="p">median 3</text>
+<rect x="1200" y="120" width="180" height="40" rx="8" fill="#960018" fill-opacity="0.1"/><text x="1290" y="147" class="p">median 2.5</text>
+<line x1="1060" y1="160" x2="1130" y2="194" class="ar"/><line x1="1290" y1="160" x2="1220" y2="194" class="ar"/>
+<rect x="1010" y="198" width="340" height="42" rx="8" fill="#960018" fill-opacity="0.16"/><text x="1180" y="226" class="m">median(3, 2.5) = 2.75 <tspan class="bad">✗</tspan></text>
+<text x="1170" y="276" class="n">the median of 1…5 is 3: it needs all the values</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1374 538" id="tool-landscape" class="diagram" role="img"
+ aria-label="Tools by where computation happens. Browser: Plotly, Altair/Vega-Lite, deck.gl and lonboard. Python server or kernel: HoloViz, Dask. Query engine: DuckDB, Polars, Mosaic, VegaFusion. GPU: RAPIDS cuDF.">
+<style>#tool-landscape .h{font-size:25px;font-weight:700;fill:#fff;text-anchor:middle} #tool-landscape .n{font-size:26px;font-weight:700;fill:#2F2D2E} #tool-landscape .d{font-size:20px;fill:#4A4A4A}</style>
+<rect x="10" y="10" width="322" height="46" rx="8" fill="#1446A0"/>
+<text x="171.0" y="41" class="h">Browser</text>
+<rect x="10" y="70" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="26" y="104" class="n">Plotly</text>
+<text x="26" y="133" class="d">interactive charts,</text>
+<text x="26" y="157" class="d">WebGL traces</text>
+<rect x="10" y="188" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="26" y="222" class="n">Altair / Vega-Lite</text>
+<text x="26" y="251" class="d">declarative grammar,</text>
+<text x="26" y="275" class="d">run by Vega in the browser</text>
+<rect x="10" y="306" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="26" y="340" class="n">deck.gl + lonboard</text>
+<text x="26" y="369" class="d">GPU map layers (WebGL,</text>
+<text x="26" y="393" class="d">WebGPU); lonboard: Jupyter</text>
+<rect x="354" y="10" width="322" height="46" rx="8" fill="#1446A0"/>
+<text x="515.0" y="41" class="h">Python server / kernel</text>
+<rect x="354" y="70" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="370" y="104" class="n">HoloViz</text>
+<text x="370" y="133" class="d">Datashader, HoloViews,</text>
+<text x="370" y="157" class="d">hvPlot, Panel</text>
+<rect x="354" y="188" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="370" y="222" class="n">Dask</text>
+<text x="370" y="251" class="d">parallel, out-of-core</text>
+<text x="370" y="275" class="d">DataFrames and arrays</text>
+<rect x="698" y="10" width="322" height="46" rx="8" fill="#1446A0"/>
+<text x="859.0" y="41" class="h">Query engine</text>
+<rect x="698" y="70" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="714" y="104" class="n">DuckDB</text>
+<text x="714" y="133" class="d">in-process SQL; also in</text>
+<text x="714" y="157" class="d">the browser (WASM)</text>
+<rect x="698" y="188" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="714" y="222" class="n">Polars</text>
+<text x="714" y="251" class="d">lazy, multithreaded</text>
+<text x="714" y="275" class="d">Rust DataFrames</text>
+<rect x="698" y="306" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="714" y="340" class="n">Mosaic</text>
+<text x="714" y="369" class="d">linked views whose</text>
+<text x="714" y="393" class="d">queries run in DuckDB</text>
+<rect x="698" y="424" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="714" y="458" class="n">VegaFusion</text>
+<text x="714" y="487" class="d">Vega / Altair transforms</text>
+<text x="714" y="511" class="d">on Apache DataFusion</text>
+<rect x="1042" y="10" width="322" height="46" rx="8" fill="#1446A0"/>
+<text x="1203.0" y="41" class="h">GPU</text>
+<rect x="1042" y="70" width="322" height="104" rx="10" fill="#fff" stroke="#A7A8A7" stroke-width="2"/>
+<text x="1058" y="104" class="n">RAPIDS cuDF</text>
+<text x="1058" y="133" class="d">GPU DataFrames; back-end</text>
+<text x="1058" y="157" class="d">for Datashader, Polars</text>
+</svg>

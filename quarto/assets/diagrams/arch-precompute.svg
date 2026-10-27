@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 410" id="arch-precompute" class="diagram" role="img"
+ aria-label="Ahead of time a batch job aggregates all rows at every zoom level into a tile pyramid or data cube, stored on a tile server; on each interaction the browser fetches the tiles of its viewport, a lookup without a pass over the rows">
+<defs><marker id="arch-precompute-k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2F2D2E"/></marker><marker id="arch-precompute-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#960018"/></marker></defs>
+<style>#arch-precompute .t{font-size:24px;font-weight:700;fill:#2F2D2E;text-anchor:middle} #arch-precompute .s{font-size:20px;fill:#2F2D2E;text-anchor:middle} #arch-precompute .a{font-size:20px;font-style:italic;fill:#2F2D2E;text-anchor:middle} #arch-precompute .ab{font-size:20px;font-style:italic;fill:#960018;text-anchor:middle} #arch-precompute .a, #arch-precompute .ab{paint-order:stroke;stroke:#fff;stroke-width:7px;stroke-linejoin:round} #arch-precompute .zb{font-size:22px;font-weight:700;fill:#960018;text-anchor:middle} #arch-precompute .zs{font-size:22px;font-weight:700;fill:#1446A0;text-anchor:middle} #arch-precompute .band{font-size:20px;font-weight:700;fill:#522B47}</style>
+<rect x="0" y="0" width="1400" height="190" fill="#522B47" fill-opacity="0.05"/>
+<text x="20" y="28" class="band">once, ahead of time</text>
+<text x="20" y="222" class="band">every interaction</text>
+<path d="M40,58 a115.0,18 0 0 0 230,0 v104 a115.0,18 0 0 1 -230,0 z" fill="#960018" fill-opacity="0.08" stroke="#A7A8A7" stroke-width="2"/>
+<ellipse cx="155.0" cy="58" rx="115.0" ry="18" fill="#F3E6E8" stroke="#A7A8A7" stroke-width="2"/>
+<text x="155.0" y="112" class="t">all rows</text>
+<line x1="276" y1="105" x2="612" y2="105" stroke="#960018" stroke-width="4" marker-end="url(#arch-precompute-r)"/>
+<text x="444.0" y="91.0" class="ab">batch job: aggregate every zoom level</text>
+<rect x="620" y="44" width="350" height="130" rx="10" fill="#960018" fill-opacity="0.0" stroke="#A7A8A7" stroke-width="2"/>
+<text x="795.0" y="80" class="t"></text>
+<rect x="640.0" y="62.0" width="72.0" height="72.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<text x="676" y="160" class="s">z0</text>
+<rect x="730.0" y="62.0" width="36.0" height="36.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="730.0" y="98.0" width="36.0" height="36.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="766.0" y="62.0" width="36.0" height="36.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="766.0" y="98.0" width="36.0" height="36.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<text x="766" y="160" class="s">z1</text>
+<rect x="830.0" y="62.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="830.0" y="80.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="830.0" y="98.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<rect x="830.0" y="116.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="848.0" y="62.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="848.0" y="80.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<rect x="848.0" y="98.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="848.0" y="116.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="866.0" y="62.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<rect x="866.0" y="80.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="866.0" y="98.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="866.0" y="116.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<rect x="884.0" y="62.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<rect x="884.0" y="80.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.22" stroke="#fff" stroke-width="1"/>
+<rect x="884.0" y="98.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.32" stroke="#fff" stroke-width="1"/>
+<rect x="884.0" y="116.0" width="18.0" height="18.0" fill="#960018" fill-opacity="0.12" stroke="#fff" stroke-width="1"/>
+<text x="866" y="160" class="s">z2</text>
+<text x="945" y="104" class="s">…</text>
+<text x="795" y="36" class="s">tile pyramid / data cube</text>
+<line x1="976" y1="105" x2="1066" y2="105" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-precompute-k)"/>
+<text x="1021.0" y="91.0" class="a">store</text>
+<rect x="1070" y="50" width="300" height="250" rx="10" fill="#960018" fill-opacity="0.04" stroke="#A7A8A7" stroke-width="2"/>
+<text x="1220.0" y="86" class="t">Tile / cube server</text>
+<text x="1220.0" y="122" class="s">static files, a CDN,</text>
+<text x="1220.0" y="150" class="s">or an in-memory cube</text>
+<rect x="300" y="225" width="250" height="150" rx="10" fill="#fff" stroke="#1446A0" stroke-width="2.5"/>
+<path d="M300,251 v-16 a10,10 0 0 1 10,-10 h230 a10,10 0 0 1 10,10 v16 z" fill="#1446A0" fill-opacity="0.15"/>
+<circle cx="316" cy="238" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="330" cy="238" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<circle cx="344" cy="238" r="4" fill="#1446A0" fill-opacity="0.5"/>
+<rect x="340" y="273" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<rect x="340" y="303" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="340" y="333" width="34" height="28" fill="#1446A0" fill-opacity="0.28"/>
+<rect x="376" y="273" width="34" height="28" fill="#1446A0" fill-opacity="0.42"/>
+<rect x="376" y="303" width="34" height="28" fill="#1446A0" fill-opacity="0.60"/>
+<rect x="376" y="333" width="34" height="28" fill="#1446A0" fill-opacity="0.48"/>
+<rect x="412" y="273" width="34" height="28" fill="#1446A0" fill-opacity="0.59"/>
+<rect x="412" y="303" width="34" height="28" fill="#1446A0" fill-opacity="0.85"/>
+<rect x="412" y="333" width="34" height="28" fill="#1446A0" fill-opacity="0.68"/>
+<rect x="448" y="273" width="34" height="28" fill="#1446A0" fill-opacity="0.35"/>
+<rect x="448" y="303" width="34" height="28" fill="#1446A0" fill-opacity="0.50"/>
+<rect x="448" y="333" width="34" height="28" fill="#1446A0" fill-opacity="0.40"/>
+<rect x="484" y="273" width="34" height="28" fill="#1446A0" fill-opacity="0.21"/>
+<rect x="484" y="303" width="34" height="28" fill="#1446A0" fill-opacity="0.30"/>
+<rect x="484" y="333" width="34" height="28" fill="#1446A0" fill-opacity="0.24"/>
+<text x="425.0" y="405" class="t"></text>
+
+<text x="425" y="398" class="t" style="font-size:20px">Browser</text>
+<line x1="556" y1="258" x2="1064" y2="258" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-precompute-k)"/>
+<text x="810.0" y="246.0" class="a">① fetch the tiles of the viewport (z / x / y)</text>
+<line x1="1064" y1="340" x2="556" y2="340" stroke="#2F2D2E" stroke-width="2.5" marker-end="url(#arch-precompute-k)"/>
+<text x="810.0" y="374.0" class="a">② stored results: a lookup, no pass over the rows</text>
+</svg>
